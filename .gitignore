@@ -121,3 +121,4 @@ bash.exe.stackdump
 
 #files for debugging
 debug.ipynb
+tmdb_all.pkl
