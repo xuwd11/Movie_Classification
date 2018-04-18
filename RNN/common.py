@@ -53,10 +53,15 @@ class Data:
         return repr(self.data)
     
     def save(self, path):
-        pickle.dump(self.data, open(path, 'wb'))
+        if path.split(".")[-1] == "npy":
+            np.save(path, self.data)
+        else:
+            pickle.dump(self.data, open(path, 'wb'))
 
         
 def load_data(path:str):
+    if path.split(".")[-1] == "npy":
+        return Data(np.load(path))
     return Data(pickle.load(open(path, 'rb')))
     
 class Split:

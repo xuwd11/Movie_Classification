@@ -43,6 +43,7 @@ def evaluate(split:Split, model:Model, batch_size:int):
     rc = recall_score(p,t,average='micro')
     f1 = f1_score(p,t,average='micro')
     print("P", pr, "\tR:", rc, "\tF1:", f1)
+    return pr, rc, f1
 
 def inference(split:Split, model:Model, batch_size:int):
     batches = Batches(split, batch_size)
