@@ -3,6 +3,25 @@ import torch.nn.functional as F
 import numpy as np
 from pack import Pack
 
+class Model:
+    def predict(self, batches, batch_i):
+        raise NotImplemented
+    
+    def get_y(self, batches, batch_i):
+        raise NotImplemented
+        
+    def calculate_class(self, predictions):
+        raise NotImplemented
+    
+    def train(self):
+        raise NotImplemented
+        
+    def eval(self):
+        raise NotImplemented
+    
+    def zero_grad(self):
+        raise NotImplemented
+
 class Encoder(torch.nn.Module):
     def __init__(self, encoder, embedding, hidden_dim, input_channel, num_layers, bidirectional, cuda):
         super().__init__()
@@ -92,15 +111,47 @@ class MultiLayerFCReLUClassifier(torch.nn.Module):
             l_out = self.relus[i](l_out)
         out = self.out_fc(l_out)
         return out
+
+class TextOnlyModel(Model):
+    def __init__(self, encoder, classifier, texts, genres):
+        self.encoder = encoder
+        self.classifier = classifier
+        self.texts = texts
+        self.genres = genres
     
-class Model1(torch.nn.Module):
+    def predict(self, batches, batch_i):
+        texts = batches.get_data(self.texts, batch_i)
+        text_pack = Pack(texts, cuda=True)
+        return self.classifier(self.encoder(text_pack))
+    
+    def get_y(self, batches, batch_i):
+        return batches.get_data(self.genres, batch_i)
+        
+    def calculate_class(self, predict_output):
+        return predict_output>0
+    
+    def train(self):
+        self.encoder.train()
+        self.classifier.train()
+        return self
+        
+    def eval(self):
+        self.encoder.eval()
+        self.classifier.eval()
+        return self
+    
+    def zero_grad(self):
+        self.encoder.zero_grad()
+        self.classifier.zero_grad()
+        
+class Model2(torch.nn.Module):
     def __init__(self, embedding, hidden_dim, num_layers, cuda):
-        super(Model1, self).__init__()
+        super().__init__()
         self.hidden_dim = hidden_dim
-        self.encoder = CombinedEncoder(encoder=torch.nn.GRU, embedding=embedding, hidden_dim=self.hidden_dim, input_channel=embedding.embedding_dim, num_layers=num_layers, bidirectional=True, cuda=cuda)
-        self.classifier = MultiLayerFCReLUClassifier(dims=[256,128], num_class=19, encoding_size=self.hidden_dim, cuda=cuda)
+        self.encoder = Encoder(encoder=torch.nn.GRU, embedding=embedding, hidden_dim=self.hidden_dim, input_channel=embedding.embedding_dim, num_layers=num_layers, bidirectional=True, cuda=cuda)
+        self.classifier = MultiLayerFCReLUClassifier(dims=[1024,512,128], num_class=19, encoding_size=self.hidden_dim, cuda=cuda)
     
     def forward(self, title_pack, text_pack):
-        encodings = self.encoder(title_pack, text_pack)
+        encodings = self.encoder(text_pack)
         output = self.classifier(encodings)
         return output
