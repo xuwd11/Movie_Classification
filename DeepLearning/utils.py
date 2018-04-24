@@ -42,7 +42,10 @@ def evaluate(split:Split, model:Model, batch_size:int):
     pr = precision_score(p,t,average='micro')
     rc = recall_score(p,t,average='micro')
     f1 = f1_score(p,t,average='micro')
-    print("P", pr, "\tR:", rc, "\tF1:", f1)
+    
+    print("P(mi)", pr, "\tR(mi):", rc, "\tF1(mi):", f1)
+    print()
+    
     return pr, rc, f1
 
 def inference(split:Split, model:Model, batch_size:int):

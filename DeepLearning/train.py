@@ -39,11 +39,14 @@ def train_epoches(n_epochs:int, model:Model, train:Split, val:Split, loss, batch
                                loss=loss, batch_size=batch_size, optimizer=optimizer, display=True)
         epoch_losses.append(losses)
         print("epoch {}:".format(epoch), np.mean(losses))
-        print("Train:", end="\t")
-        evaluate(train, model, batch_size=batch_size)
+        
+        #print("Train:", end="\t")
+        #train_result = evaluate(train, model, batch_size=batch_size)
+        train_result = None
+        
         print("Val:", end="\t")
         val_result = evaluate(val, model, batch_size=batch_size)
         
         if scheduler is not None:
             scheduler.step(val_result[-1])
-    return epoch_losses
+    return epoch_losses, (train_result, val_result)

@@ -31,8 +31,11 @@ class Pack:
             self.pack_data = self.pack_data.cuda()
         self.cuda = cuda
     
-    def get_pack(self, embedding):
-        emb = embedding(self.pack_data)
+    def get_pack(self, embedding, torch_var=False):
+        if not torch_var:
+            emb = embedding(self.pack_data)
+        else:
+            emb = embedding(torch.autograd.Variable(self.pack_data))
         return torch.nn.utils.rnn.pack_padded_sequence(emb, self.pack_lengths, batch_first=True)
 
     def get_rev(self):
