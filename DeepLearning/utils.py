@@ -48,7 +48,7 @@ def evaluate(split:Split, model:Model, batch_size:int):
     
     return pr, rc, f1
 
-def inference(split:Split, model:Model, batch_size:int):
+def inference(split:Split, model:Model, batch_size:int, proba=False):
     batches = Batches(split, batch_size)
 
     model = model.eval()
@@ -60,8 +60,11 @@ def inference(split:Split, model:Model, batch_size:int):
         
         model_output = model.predict(batches, i)
         
-        y_pred = model.calculate_class(model_output.cpu().data.numpy())
+        y_pred = model_output.cpu().data.numpy()
 
+        if not proba:
+            y_pred = model.calculate_class(y_pred)
+            
         y_true = model.get_y(batches, i)
         
         preds.append(y_pred)
