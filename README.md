@@ -1,7 +1,8 @@
-# Movie classification using plot descriptions
-**(ac209b final project)**
+# Deep Learning for Movie Genre Classification
 
-## References
-1. [An end to end implementation of a Machine Learning pipeline](https://spandan-madan.github.io/DeepLearningProject/), Spandan Madan, 2017.
-2. [Oversampling with Bigram Multinomial Naive Bayes to Predict Yelp Review Star Classes](https://kevin11h.github.io/YelpDatasetChallengeDataScienceAndMachineLearningUCSD/), Kevin Hung and Henry Qiu, University of California, San Diego.
-3. [A literature survey on algorithms for multi-label learning](https://www.researchgate.net/profile/Mohammad_Sorower/publication/266888594_A_Literature_Survey_on_Algorithms_for_Multi-label_Learning/links/58d1864392851cf4f8f4b72a/A-Literature-Survey-on-Algorithms-for-Multi-label-Learning.pdf), Mohammad S Sorower,  2010. (See Section 7 Evaluation Metrics)
+In this project, we implemented several machine learning models to predict the genres of movies using their **overview descriptions and posters** (since we want to predict genres for new movies, we didn't use features like *ratings*, which are not available for new movies). We further compared those models and made a machine learning pipeline for the best model. **The best model is a concatenated model composed of an encoder for posters and an encoder for overview texts**.
+
+Our pipeline can be used to automatically tag the genres of movies on movie-hosting websites like Netflix and movie-database websites like TMDB.
+
+Please view our final report [here](https://github.com/xuwd11/Movie_Classification/blob/master/submit/report.pdf).  
+Please view our poster [here](https://github.com/xuwd11/Movie_Classification/blob/master/submit/ac209b_poster.pdf).
