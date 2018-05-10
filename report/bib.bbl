@@ -1,0 +1,59 @@
+\begin{thebibliography}{99}
+\bibitem{web_movie_num}
+Follows, S. (2017). 
+How many films are released each year?
+\url{https://stephenfollows.com/how-many-films-are-released-each-year/}
+accessed Apr. 21, 2018.
+
+\bibitem{multilabel}
+Sorower, M. S. (2010).
+A literature survey on algorithms for multi-label learning.
+{\it Oregon State University, Corvallis, 18}
+
+\bibitem{multilabel1}
+Fürnkranz, J., Hüllermeier, E., Mencía, E. L., \& Brinker, K. (2008).
+Multilabel classification via calibrated label ranking. 
+{\it Machine learning}, 73(2), 133-153.
+
+\bibitem{multilabel2}
+Read, J., Pfahringer, B., Holmes, G., \& Frank, E. (2011).
+Classifier chains for multi-label classification.
+{\it Machine learning}, 85(3), 333.
+
+\bibitem{word2vec}
+Mikolov, T., Sutskever, I., Chen, K., Corrado, G. S., \& Dean, J. (2013).
+Distributed representations of words and phrases and their compositionality.
+{\it Advances in neural information processing systems}, pp. 3111-3119.
+
+\bibitem{glove}
+Pennington, J., Socher, R., \& Manning, C. (2014).
+Glove: Global vectors for word representation.
+{\it Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP)}, pp. 1532-1543.
+
+\bibitem{lstm}
+Sak, H., Senior, A., \& Beaufays, F. (2014).
+Long short-term memory recurrent neural network architectures for large scale acoustic modeling.
+{\it Fifteenth annual conference of the international speech communication association}.
+
+\bibitem{gru}
+Cho, K., Van Merriënboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., \& Bengio, Y. (2014).
+Learning phrase representations using RNN encoder-decoder for statistical machine translation. {\it arXiv:1406.1078}.
+
+\bibitem{transferl}
+Fei-Fei, L., Johnson, J., \& Yeung, S. (2018).
+CS231n:  Convolutional Neural Networksfor Visual Recognition. \url{http://cs231n.github.io/transfer-learning/} accessed Apr. 21, 2018.
+
+\bibitem{vgg}
+Simonyan, K., \& Zisserman, A. (2014).
+Very deep convolutional networks for large-scale image recognition. 
+{\it arXiv:1409.1556}.
+
+\bibitem{resnet}
+He, K., Zhang, X., Ren, S., \& Sun, J. (2016).
+Deep residual learning for image recognition.
+{\it Proceedings of the IEEE conference on computer vision and pattern recognition}, pp. 770-778.
+
+\bibitem{tfidf}
+Leskovec, J., Rajaraman, A., \& Ullman, J. D. (2014). {\it Mining of massive datasets}. Cambridge university press, pp. 1-17.
+
+\end{thebibliography}
